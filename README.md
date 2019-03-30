@@ -12,3 +12,6 @@ Used libraries:
 - jQuery with jQuery UI
 - Chart.js
 - Popper(for Bootstrap)
+
+
+Live: https://rybapoludniowa.github.io/FitCalc/
