@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FitCalc</title>
+    <!-- Bootstrap -->
+    <link href="bootstrap-4.0.0.css" rel="stylesheet">
+    <link rel="stylesheet" href="jQuery-ui.css">
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+    <a class="navbar-brand" href="#">FitCalc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" id="click_calories">Kalorie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="click_product">Dodaj produkt</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="click_bmr">Nowe BMR</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="click_history">Historia</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="click_json">JSON</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/RybaPoludniowa/FitCalc">Github</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="jumbotron" id="new_bmr">
+    <h1 class="display-4">Oblicz BMR</h1>
+    <form>
+        <div class="form-group">
+            <label for="selectGender">Płeć</label>
+            <select class="form-control" id="selectGender">
+                <option value="1">Mężczyzna</option>
+                <option value="2">Kobieta</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="boxMass">Masa(kg)</label>
+            <input type="number" class="form-control" id="boxMass" placeholder="75">
+        </div>
+        <div class="form-group">
+            <label for="boxHeight">Wzrost(cm)</label>
+            <input type="number" class="form-control" id="boxHeight" placeholder="175">
+        </div>
+        <div class="form-group">
+            <label for="boxAge">Wiek</label>
+            <input type="number" class="form-control" id="boxAge" placeholder="25">
+        </div>
+        <div class="form-group">
+            <label for="selectActivity">Aktywność</label>
+            <select class="form-control" id="selectActivity">
+                <option value="1.2">brak aktywności, praca siedząca</option>
+                <option value="1.3">niska aktywność (praca siedząca i 1-2 treningi w tygodniu)</option>
+                <option value="1.5">średnia aktywność (praca siedząca i treningi 3-4 razy w tygodniu)</option>
+                <option value="1.7">wysoka aktywność (praca fizyczna i 3-4 treningi w tygodniu)</option>
+                <option value="1.9">bardzo wysoka aktywność (zawodowi sportowcy, osoby codziennie trenujące)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="selectTarget">Cel</label>
+            <select class="form-control" id="selectTarget">
+                <option value="-500">Utrata masy</option>
+                <option value="0">Utrzymanie masy</option>
+                <option value="500">Przybranie masy</option>
+            </select>
+        </div>
+        <button class="btn btn-primary" id="calc_bmr">Oblicz BMR</button>
+    </form>
+    <p></p>
+</div>
+<div class="jumbotron" id="calories">
+    <h1 class="display-4">Zjedzone kalorie</h1>
+    <canvas id="myChart0"></canvas>
+    <form>
+        <div class="form-group">
+            <label for="inputSearch">Szukaj produkt/posiłek</label>
+            <input type="text" class="form-control autocomplete" id="inputSearch"
+                   placeholder="Wprowadź nazwę produktu/posiłku"></div>
+        <div class="form-group">
+            <label for="inputCount">Ilość</label>
+            <input type="number" class="form-control autocomplete" id="inputCount" placeholder="1"></div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioGrams" value="grams">
+            <label class="form-check-label" for="radioGrams">Gram</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioPiece" value="piece">
+            <label class="form-check-label" for="radioPiece">Sztuka</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkSim">
+            <label class="form-check-label" for="checkSim">
+                Symulator(żółta linia, wyrówna się z czerwoną po dodaniu posiłku z odznaczoną tą opcją)
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="checkClear">
+            <label class="form-check-label" for="checkClear">
+                Wyczyść dzisiejsze spożycie
+            </label>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" id="add_calories">Dodaj kalorie</button>
+        </div>
+
+    </form>
+
+</div>
+<div class="jumbotron" id="product">
+    <h1 class="display-4">Dodaj produkt</h1>
+    <form>
+        <div class="form-group">
+            <label for="boxPName">Nazwa</label>
+            <input type="text" class="form-control" id="boxPName" placeholder="Nazwa produktu"></div>
+        <div class="form-group">
+            <label for="boxPFat">Tłuszcze(g)</label>
+            <input type="number" class="form-control" id="boxPFat" placeholder="1"></div>
+        <div class="form-group">
+            <label for="boxPCarbo">Węglowodany(g)</label>
+            <input type="number" class="form-control" id="boxPCarbo" placeholder="1"></div>
+        <div class="form-group">
+            <label for="boxPProtein">Białka(g)</label>
+            <input type="number" class="form-control" id="boxPProtein" placeholder="1"></div>
+        <div class="form-group">
+            <label for="boxPCount">Ilość (g lub ml), dla której podane są wartości</label>
+            <input type="number" class="form-control" id="boxPCount" placeholder="1"></div>
+        <div class="form-group">
+            <label for="boxPPortion">Porcja (g lub ml)</label>
+            <input type="number" class="form-control" id="boxPPortion" placeholder="1"></div>
+        <button class="btn btn-primary" id="add_product">Dodaj produkt</button>
+    </form>
+</div>
+<div class="jumbotron" id="history">
+    <h1 class="display-4">Historia</h1>
+    <canvas id="myChartHistory"></canvas>
+    <canvas id="myChartHistory1"></canvas>
+</div>
+<div class="jumbotron" id="json">
+    <h1 class="display-4">Dodaj podstawową bazę</h1>
+    <p class="lead"><a class="btn btn-primary btn-lg" id="json_add" role="button">Dodaj(może zwiesić przeglądarkę)</a>
+    </p>
+</div>
+<footer class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p>Copyright © Mateusz Nejman</p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="jQuery.js"></script>
+<script src="jQuery-ui.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="popper.js"></script>
+<script src="bootstrap-4.0.0.js"></script>
+<script src="Chart.js"></script>
+<script src="FitCalc.js"></script>
+</body>
+</html>
