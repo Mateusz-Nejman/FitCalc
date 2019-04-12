@@ -1,5 +1,5 @@
 # FitCalc
-Simple JavaScript calories application, with offline support
+Simple JavaScript calories application, with offline support. 
 
 Features:
 - Responsive One Page application
@@ -12,6 +12,12 @@ Used libraries:
 - jQuery with jQuery UI
 - Chart.js
 - Popper(for Bootstrap)
+
+TODO:
+- Barcode scanner
+- Global database
+- New layout
+- Offline checking(Floating info or something :])
 
 
 Live: https://rybapoludniowa.github.io/FitCalc/
