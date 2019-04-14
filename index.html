@@ -8,6 +8,7 @@
     <!-- Bootstrap -->
     <link href="bootstrap-4.0.0.css" rel="stylesheet">
     <link rel="stylesheet" href="jQuery-ui.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -87,6 +88,9 @@
 <div class="jumbotron" id="calories">
     <h1 class="display-4">Zjedzone kalorie</h1>
     <canvas id="myChart0"></canvas>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"onclick="open_scanner_calories()">
+        Zeskanuj kod
+    </button>
     <form>
         <div class="form-group">
             <label for="inputSearch">Szukaj produkt/posiłek</label>
@@ -124,7 +128,13 @@
 </div>
 <div class="jumbotron" id="product">
     <h1 class="display-4">Dodaj produkt</h1>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="open_scanner_addproduct()">
+        Zeskanuj kod
+    </button>
     <form>
+        <div class="form-group">
+            <label for="boxPCode">Kod Produktu</label>
+            <input type="text" class="form-control" id="boxPCode" placeholder="Kod Produktu"></div>
         <div class="form-group">
             <label for="boxPName">Nazwa</label>
             <input type="text" class="form-control" id="boxPName" placeholder="Nazwa produktu"></div>
@@ -165,6 +175,27 @@
         </div>
     </div>
 </footer>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Zeskanuj kod</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="container">
+                    <div id="interactive" class="viewport" ></div></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_scanner()">Zamknij</button>
+                <button type="button" class="btn btn-primary">Zapisz</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="jQuery.js"></script>
 <script src="jQuery-ui.js"></script>
@@ -172,6 +203,7 @@
 <script src="popper.js"></script>
 <script src="bootstrap-4.0.0.js"></script>
 <script src="Chart.js"></script>
+<script src="quagga.js"></script>
 <script src="FitCalc.js"></script>
 </body>
 </html>

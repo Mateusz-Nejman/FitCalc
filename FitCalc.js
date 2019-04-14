@@ -79,6 +79,7 @@ show_div('calories');
 
 
         $('#add_product').click(() => {
+            var code = $('#boxPCode').val();
             var name = $('#boxPName').val();
             var protein = $('#boxPProtein').val();
             var carbo = $('#boxPCarbo').val();
@@ -96,7 +97,8 @@ show_div('calories');
                     'proteins': (protein * 4.0) * modifier,
                     'fats': (fat * 9.0) * modifier,
                     'carbs': (carbo * 4.0) * modifier,
-                    'portion': portion
+                    'portion': portion,
+                    'code':code
                 };
                 localStorage.setItem(name, JSON.stringify(ob));
 
@@ -515,3 +517,101 @@ if (('caches' in window)) {
     });
     console.log("End adding to Cache!");
 }
+{
+
+}
+
+function close_scanner()
+{
+    Quagga.stop();
+}
+
+function open_scanner_addproduct()
+{
+    open_scanner(data =>
+    {
+        $('#boxPCode').val(data.codeResult.code);
+
+    })
+}
+
+function open_scanner_calories()
+{
+    open_scanner(data =>
+    {
+        let contains = false;
+        let product_name = "";
+        $.each(Object.keys(localStorage), (i, item) => {
+            if (!extrude.includes(item)) {
+
+                if(localStorage.getItem(item).includes(data.codeResult.code))
+                {
+                    contains = true;
+                    product_name = item;
+                }
+            }
+
+        });
+        if(contains)
+        {
+            $('#inputSearch').val(product_name);
+        }
+        else
+        {
+            alert("Nie znaleziono produktu z danym kodem!");
+        }
+
+    })
+}
+
+function open_scanner(callback)
+{
+    Quagga.init({
+        inputStream: {
+            type : "LiveStream",
+            constraints: {
+                width: {min: 640},
+                height: {min: 480},
+                facingMode: "environment",
+                aspectRatio: {min: 1, max: 2}
+            },
+            area: { // defines rectangle of the detection/localization area
+                top: "0%",    // top offset
+                right: "0%",  // right offset
+                left: "0%",   // left offset
+                bottom: "0%"  // bottom offset
+            }
+        },
+        locator: {
+            patchSize: "medium",
+            halfSample: true
+        },
+        numOfWorkers: 4,
+        frequency: 10,
+        decoder: {
+            readers : [{
+                format: "ean_reader",
+                config: {}
+            }]
+        },
+        locate: true
+
+    }, function(err) {
+        if (err) {
+            console.log(err);
+            return
+        }
+        console.log("Initialization finished. Ready to start");
+
+
+
+        Quagga.start();
+
+        Quagga.onDetected(data => {
+            callback(data);
+            $("[data-dismiss=modal]").trigger({ type: "click" });
+        });
+    });
+}
+
+
