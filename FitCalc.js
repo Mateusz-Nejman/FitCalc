@@ -549,6 +549,7 @@ function open_scanner_calories()
             }
 
         });
+        close_scanner();
         if(contains)
         {
             $('#inputSearch').val(product_name);
@@ -557,7 +558,7 @@ function open_scanner_calories()
         {
             alert("Nie znaleziono produktu z danym kodem!");
         }
-        close_scanner();
+
 
     })
 }
