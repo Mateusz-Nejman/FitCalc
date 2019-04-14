@@ -6,15 +6,16 @@ Features:
 - Nice charts
 - BMR calculations
 - Work offline
+- Barcode scanner
 
 Used libraries:
 - Bootstrap
 - jQuery with jQuery UI
 - Chart.js
 - Popper(for Bootstrap)
+- QuaggaJs(Barcode scanner)
 
 TODO:
-- Barcode scanner
 - Global database
 - New layout
 - Offline checking(Floating info or something :])
