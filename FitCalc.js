@@ -517,9 +517,6 @@ if (('caches' in window)) {
     });
     console.log("End adding to Cache!");
 }
-{
-
-}
 
 function close_scanner()
 {
@@ -531,7 +528,7 @@ function open_scanner_addproduct()
     open_scanner(data =>
     {
         $('#boxPCode').val(data.codeResult.code);
-
+        close_scanner();
     })
 }
 
@@ -560,6 +557,7 @@ function open_scanner_calories()
         {
             alert("Nie znaleziono produktu z danym kodem!");
         }
+        close_scanner();
 
     })
 }
