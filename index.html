@@ -89,7 +89,7 @@
     <h1 class="display-4">Zjedzone kalorie</h1>
     <canvas id="myChart0"></canvas>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"onclick="open_scanner_calories()">
-        Zeskanuj kod
+        Zeskanuj kod(Tylko mobile)
     </button>
     <form>
         <div class="form-group">
@@ -98,7 +98,7 @@
                    placeholder="Wprowadź nazwę produktu/posiłku"></div>
         <div class="form-group">
             <label for="inputCount">Ilość</label>
-            <input type="number" class="form-control autocomplete" id="inputCount" placeholder="1"></div>
+            <input type="number" class="form-control autocomplete" id="inputCount" step="0.01" placeholder="1"></div>
         <div class="form-check">
             <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radioGrams" value="grams">
             <label class="form-check-label" for="radioGrams">Gram</label>
@@ -140,19 +140,19 @@
             <input type="text" class="form-control" id="boxPName" placeholder="Nazwa produktu"></div>
         <div class="form-group">
             <label for="boxPFat">Tłuszcze(g)</label>
-            <input type="number" class="form-control" id="boxPFat" placeholder="1"></div>
+            <input type="number" class="form-control" id="boxPFat" step="0.01" placeholder="1"></div>
         <div class="form-group">
             <label for="boxPCarbo">Węglowodany(g)</label>
-            <input type="number" class="form-control" id="boxPCarbo" placeholder="1"></div>
+            <input type="number" class="form-control" id="boxPCarbo" step="0.01" placeholder="1"></div>
         <div class="form-group">
             <label for="boxPProtein">Białka(g)</label>
-            <input type="number" class="form-control" id="boxPProtein" placeholder="1"></div>
+            <input type="number" class="form-control" id="boxPProtein" step="0.01" placeholder="1"></div>
         <div class="form-group">
             <label for="boxPCount">Ilość (g lub ml), dla której podane są wartości</label>
-            <input type="number" class="form-control" id="boxPCount" placeholder="1"></div>
+            <input type="number" class="form-control" id="boxPCount" step="0.01" placeholder="1"></div>
         <div class="form-group">
             <label for="boxPPortion">Porcja (g lub ml)</label>
-            <input type="number" class="form-control" id="boxPPortion" placeholder="1"></div>
+            <input type="number" class="form-control" id="boxPPortion" step="0.01" placeholder="1"></div>
         <button class="btn btn-primary" id="add_product">Dodaj produkt</button>
     </form>
 </div>
