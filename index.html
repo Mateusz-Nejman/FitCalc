@@ -129,7 +129,7 @@
 <div class="jumbotron" id="product">
     <h1 class="display-4">Dodaj produkt</h1>
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="open_scanner_addproduct()">
-        Zeskanuj kod
+        Zeskanuj kod(Tylko mobile)
     </button>
     <form>
         <div class="form-group">
@@ -180,7 +180,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Zeskanuj kod</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Zeskanuj kod(Tylko mobile)</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -190,8 +190,29 @@
                     <div id="interactive" class="viewport" ></div></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="close_scanner()">Zamknij</button>
+                <button type="button" class="btn btn-secondary"  id="close_scan" data-dismiss="modal" onclick="close_scanner()">Zamknij</button>
                 <button type="button" class="btn btn-primary">Zapisz</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Witaj!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Dziękuję za skorzystanie z aplikacji. Staram się, aby ta aplikacja była jak najlepsza.
+                Baza produktów będzie z czasem powiększana, dzięki czemu nie będziecie musieli sami dodawać swoich produktów.
+                Zachęcam do wysyłania różnych spostrzeżeń na <a href="mailto:mateusz_nejman@hotmail.com">mateusz_nejman@hotmail.com</a>. Miłego używania!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Zamknij</button>
             </div>
         </div>
     </div>
@@ -203,7 +224,7 @@
 <script src="popper.js"></script>
 <script src="bootstrap-4.0.0.js"></script>
 <script src="Chart.js"></script>
-<script src="quagga.js"></script>
+<script src="quagga.min.js"></script>
 <script src="FitCalc.js"></script>
 </body>
 </html>
