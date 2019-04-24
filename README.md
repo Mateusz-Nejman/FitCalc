@@ -1,5 +1,5 @@
 # FitCalc
-Simple JavaScript calories application, with offline support. 
+Extended JavaScript calories application, with offline support. 
 
 Features:
 - Responsive One Page application
