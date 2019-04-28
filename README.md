@@ -21,4 +21,4 @@ Extended JavaScript calories application, with offline support.
 - Offline checking(Floating info or something :])
 
 
-**Live**: https://rybapoludniowa.github.io/FitCalc/
+**Live**: https://mateusz-nejman.github.io/FitCalc/
